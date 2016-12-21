@@ -21,6 +21,8 @@ var makeMiddleEarth = function() {
   jQuery('body').append($middleEarth);
 }
 
+makeMiddleEarth();
+
 var makeHobbits = function() {
   // 1.  Create a ul tag with an id of "hobbits".
     var $hobbits = jQuery('<ul>');
@@ -41,14 +43,36 @@ var makeHobbits = function() {
   //     "The Shire" (the first article tag on the page).
 }
 
+makeHobbits();
+
 var keepItSecretKeepItSafe = function() {
   // 1.  Create a div with an id of "the-ring".
+  var $ring = jQuery('<div>')
+                  .attr('id', 'the-ring')
+                  .addClass('magic-imbued-jewelry');
+  var $hobbits = $('.hobbit');
+  var $frodo = $hobbits.first();
+  $frodo.append($ring);
   // 2.  Give div#the-ring a class of "magic-imbued-jewelry".
   // 3.  Add div#the-ring as a child element of the li.hobbit
   //     representing "Frodo."
 }
 
+keepItSecretKeepItSafe();
+
 var makeBuddies = function() {
+    var $aside = jQuery('<aside>');
+    var $buddies = jQuery('<ul>')
+                    .attr('id', 'buddies');
+    $buddies.appendTo($aside);
+      buddies.forEach(function(buddy) {
+        var $buddy = jQuery('<li>')
+                      .attr('class', 'buddy');
+        $buddy.text(buddy);
+        $buddy.appendTo($buddies);
+      });
+    var $lands = jQuery('.land');
+    $lands.eq(1).append($aside);
   // 1.  Create an aside tag.
   // 2.  Create a ul tag with an id of "buddies" and append it to
   //     the aside tag.
@@ -60,17 +84,48 @@ var makeBuddies = function() {
   //     representing "Rivendell."
 }
 
+makeBuddies();
+
 var beautifulStranger = function() {
   // 1.  Find the li.buddy representing "Strider".
   // 2.  Change the "Strider" text to "Aragorn" and make its
   //     color green.
+  var $buddy = jQuery('.buddy');
+  var $strider = $buddy.eq(2).text('Aragorn');
+  $strider.css('color','green');
+
 }
+
+beautifulStranger();
+
+
 
 var leaveTheShire = function() {
   // 1.  "Assemble the Hobbits" and move them (as a list) to Rivendell.
+  var $hobbits = jQuery('.hobbit');
+  var $lands = jQuery('.land').eq(1);
+  $hobbits.appendTo($lands);
 }
 
+leaveTheShire();
+
 var forgeTheFellowShip = function() {
+  var $fellowship = jQuery('<div>')
+                     .attr('id', 'the-fellowship');
+  var $lands = $('h1').eq(1);
+  $fellowship.appendTo($lands);
+  var $fellowshipList = jQuery('<ul>');
+  $fellowshipList.appendTo($fellowship);
+    buddies.forEach(function(name) {
+      var $buddy = $('<li>');
+      $buddy.text(name);
+      $buddy.appendTo($fellowship);
+    })
+    hobbits.forEach(function(name) {
+      var $hobbit = $('<li>');
+      $hobbit.text(name);
+      $hobbit.appendTo($fellowship);
+    })
   // 1.  Create a div with an id of "the-fellowship" within the
   //     section.land for "Rivendell". Append a list to it.
   // 2.  Add each hobbit and buddy one at a time to
