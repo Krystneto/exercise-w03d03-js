@@ -116,17 +116,25 @@ var forgeTheFellowShip = function() {
   $fellowship.appendTo($lands);
   var $fellowshipList = jQuery('<ul>');
   $fellowshipList.appendTo($fellowship);
-    buddies.forEach(function(name) {
-      var $buddy = $('<li>');
-      $buddy.text(name);
-      $buddy.appendTo($fellowship);
-    })
-    hobbits.forEach(function(name) {
-      var $hobbit = $('<li>');
-      $hobbit.text(name);
-      $hobbit.appendTo($fellowship);
-    })
-  // 1.  Create a div with an id of "the-fellowship" within the
+      var $buddy = $('.buddy');
+      var $hobbit = $('.hobbit');
+      $hobbit.each(function() {
+        $hobbit.appendTo($fellowshipList);
+        alert(this.textContent + ' has joined the party');
+      })
+      $buddy.each(function() {
+        $buddy.appendTo($fellowshipList);
+        alert(this.textContent + ' has joined your party');
+      })
+      // $hobbit.appendTo($fellowship);
+      // $buddy.appendTo($fellowship);
+      // alert(name + ' has joined the party');
+    // hobbits.forEach(function(name) {
+    //   var $hobbit = $('<li>');
+    //   $hobbit.text(name);
+    //   $hobbit.appendTo($fellowship);
+    //   alert(name + ' has joined the party');
+      // 1.  Create a div with an id of "the-fellowship" within the
   //     section.land for "Rivendell". Append a list to it.
   // 2.  Add each hobbit and buddy one at a time to
   //     'div#the-fellowship' list.
@@ -134,7 +142,13 @@ var forgeTheFellowShip = function() {
   //     have joined your party.
 }
 
+forgeTheFellowShip();
+
 var theBalrog = function() {
+  var $gandalf = $('.buddy:eq(0)');
+  $gandalf.text('Gandalf the White')
+          .addClass('the-white')
+          .css({'border': '3px solid white', 'border-radius': '10px','color': 'white'});
   // 1.  Select the "li.buddy" for "Gandalf"...
   // 2.  And change its text to "Gandalf the White", and give it
   //     the class "the-white".
@@ -143,14 +157,28 @@ var theBalrog = function() {
   //     making it's color white.
 }
 
+theBalrog();
+
 var hornOfGondor = function() {
+  alert('The Horn of Gondor has been blown');
+  var $boramir = $('.buddy:eq(3)');
+  $boramir.css({'text-decoration':'line-through', 'opacity':'0.3',
+          'color':'black'});
   // 1.  Pop up an alert that the Horn of Gondor has been blown.
   // 2.  Put a line-through on Boromir's name.
   // 3.  Fade Boromir's opacity to 0.3 (he lives on in spirit).
   // 4.  Make Boromir's text color black.
 }
 
+hornOfGondor();
+
 var itsDangerousToGoAlone = function() {
+  var $soulmates = $('<ul>').addClass('soulmates');
+  var $mordor = $('h1:eq(2)');
+  $soulmates.appendTo($mordor);
+  var $fellowship = $('.fellowship');
+  $fellowship.eq(0).appendTo($soulmates);
+  $fellowship.eq(1).appendTo($soulmates);
   // 1.  Create a list with class "soulmates" in Mordor.
   // 2.  Take Frodo and Sam out of The Fellowship and move them
   //     to ul.soulmates in Mordor.
