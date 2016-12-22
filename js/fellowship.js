@@ -208,7 +208,14 @@ function weWantsIt() {
 weWantsIt();
 
 function thereAndBackAgain() {
+  $('#mount-doom').children().eq(0).remove();
+  var $hobbits = $('#hobbits');
+  var $hobbit = $('.hobbit');
+  $hobbit.appendTo($hobbits);
+  $('h1:eq(2)').addClass('collapse');
   // 1.  Remove Gollum and the Ring from the document.
   // 2.  Add a list to the shire, and move all the hobbits in to it.
   // 3.  Add the class "collapse" to Mordor.
 }
+
+thereAndBackAgain();
