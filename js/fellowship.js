@@ -176,20 +176,36 @@ var itsDangerousToGoAlone = function() {
   var $soulmates = $('<ul>').addClass('soulmates');
   var $mordor = $('h1:eq(2)');
   $soulmates.appendTo($mordor);
-  var $fellowship = $('.fellowship');
-  $fellowship.eq(0).appendTo($soulmates);
-  $fellowship.eq(1).appendTo($soulmates);
+  var $hobbits = $('.hobbit');
+  $hobbits.eq(0).appendTo($soulmates);
+  $hobbits.eq(1).appendTo($soulmates);
+  var $mountDoom = $('<div>')
+                    .attr('id','mount-doom');
+  $mountDoom.appendTo($mordor);
   // 1.  Create a list with class "soulmates" in Mordor.
   // 2.  Take Frodo and Sam out of The Fellowship and move them
   //     to ul.soulmates in Mordor.
   // 3.  Add a div with an id of "mount-doom" to Mordor
 }
 
+itsDangerousToGoAlone();
+
 function weWantsIt() {
+  var $gollum = $('<div>')
+                .attr('id','gollum');
+  $gollum.text('Gollum');
+  $gollum.appendTo( $('h1:eq(2)').children().eq(1) );
+  var $frodo = $('.soulmates').children().eq(0);
+  $('#the-ring').remove();
+  $('.magic-imbued-jewelry').remove();
+  $gollum.attr('id', 'the-ring')
+         .addClass('magic-imbued-jewelry');
   // 1.  Create a div with an id of "gollum" and add it to Mordor.
   // 2.  Remove The Ring from Frodo and give it to Gollum.
   // 3.  Move Gollum into Mount Doom.
 }
+
+weWantsIt();
 
 function thereAndBackAgain() {
   // 1.  Remove Gollum and the Ring from the document.
